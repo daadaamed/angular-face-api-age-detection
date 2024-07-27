@@ -1,0 +1,30 @@
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+  issue_comment:
+jobs:
+  pr_agent_job:
+    if: ${{ github.event.sender.type != 'Bot' }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: write
+    name: Run PR Agent on every pull request, respond to user comments
+    steps:
+      - name: PR Agent action step
+        id: pragent
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+    # ------------- pin the action to a specific release for stability
+    # steps:
+    # - name: PR Agent action step
+    #   id: pragent
+    #   uses: docker://codiumai/pr-agent:0.23-github_action
+    # --------- specify the Docker image
+    #steps:
+    # - name: PR Agent action step
+    #   id: pragent
+    #   uses: docker://codiumai/pr-agent@sha256:14165e525678ace7d9b51cda8652c2d74abb4e1d76b57c4a6ccaeba84663cc64
