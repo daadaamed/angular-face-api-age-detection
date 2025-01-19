@@ -17,9 +17,9 @@ The backend is built using FastAPI. It provides API endpoints for processing and
 ```sh
 npm install
 npm start
-
+```
 ## API Server Setup
 ```sh
 cd src
 uvicorn main:app --reload
-
+```
