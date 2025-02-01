@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Face Detection Chat</h1>
+  <h1>Face Detection App</h1>
   <div class="video-container">
     <video #video id="video" width="640" height="480" autoplay></video>
     <canvas #canvas id="canvas" width="640" height="480"></canvas>
@@ -8,6 +8,10 @@
     <div *ngIf="age" class="info-item">
       <span class="label">Age:</span>
       <span class="value">{{age}}</span>
+    </div>
+    <div *ngIf="gender" class="info-item">
+      <span class="label">Gender:</span>
+      <span class="value">{{gender}}</span>
     </div>
     <div *ngIf="mood" class="info-item">
       <span class="label">Mood:</span>
